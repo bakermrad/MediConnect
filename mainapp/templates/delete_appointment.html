@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete Appointment
+{% endblock %}
+{% block style %}
+
+<style>
+
+.form-container {
+max-width: 400px;
+margin: 0 auto;
+padding: 20px;
+background-color: #cdfef2;
+border-radius: 4px;
+}
+
+/* Form input styles */
+.form-container label {
+display: block;
+margin-bottom: 10px;
+font-weight: bold;
+}
+.errorlist{
+  color: red;
+}
+.form-container input[type="text"],
+.form-container input[type="password"] {
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+.form-container button[type="submit"] {
+  margin: 10px;
+padding: 10px;
+background-color: #02503c;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+</style> {% endblock style %}
+
+{% block Page_Body %}
+<form method="post" class="form-container" >
+  {% csrf_token %}
+  <h1>Delete Appointment</h1>
+  <p>Are you sure you want to delete the appointment?</p>
+  <center>
+  <button type="submit">Delete</button>
+</center>
+</form>
+{% endblock %}

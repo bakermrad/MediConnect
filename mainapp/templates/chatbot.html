@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+chatbot
+{% endblock %}
+{% block style %}
+
+{% comment %} 
+Primary: #e4e1f9 (RGB: 228, 225, 249)
+Secondary: #0c0727 (RGB: 12, 7, 39)
+Primary Button: #9e8fff (RGB: 158, 143, 255)
+Secondary Button: #120b3c (RGB: 18, 11, 60)
+Accent: #5338ff (RGB: 83, 56, 255) {% endcomment %}
+<style>
+body{
+    background-color: #cdfef2;
+}
+</style> {% endblock style %}
+
+{% block Page_Body %}
+<div class="flex justify-center items-center h-screen">
+  <div class="max-w-md p-6 bg-white rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-center mb-2">Enter the name of your disease</h1>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="user_input" class="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <button type="submit" class="w-full px-4 py-2 bg-[#3cb46e] text-white font-semibold rounded-md hover:bg-[#02503c]">Submit</button>
+    </form>
+
+    {% if response %}
+    <div class="mt-4">
+      {{ response | safe }}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock Page_Body %}

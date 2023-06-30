@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+{% block title %}
+Appointment
+{% endblock %}
+
+{% block style %}
+<style>
+body{
+    background-color: #cdfef2 ;
+}
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+}      
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 700px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+  }
+  label{
+    font-size: 18px;
+    padding: 6px;
+  }
+  .title {
+    font-size: 28px;
+    color: #02503c;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  
+  .title::before,
+  .title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color: #02503c;
+  }
+  
+  .title::before {
+    width: 18px;
+    height: 18px;
+    background-color: #02503c;
+  }
+  
+.input{
+  width: 100%;
+  padding: 10px;
+  background-color: #cdfef2;
+  color: #120b3c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  }
+
+  
+ .submit {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #02503c;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+   }
+   
+   .submit::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #02503c;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+   }
+   
+   .submit:hover {
+    color: #e8e8e8;
+   }
+   
+   .submit:hover::before {
+    width: 100%;
+   }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+</style>
+{% comment %} 
+Primary: #e4e1f9 (RGB: 228, 225, 249)
+Secondary: #0c0727 (RGB: 12, 7, 39)
+Primary Button: #9e8fff (RGB: 158, 143, 255)
+Secondary Button: #120b3c (RGB: 18, 11, 60)
+Accent: #5338ff (RGB: 83, 56, 255) {% endcomment %}
+
+{% endblock style %}
+
+{% block Page_Body %}
+<div class="container">
+    <div class="form">
+        <h1 class="title">Schedule Appointment</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <center>
+            <button type="submit" class="submit">Schedule</button>
+            </center>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
+
+
+{% endblock %}
